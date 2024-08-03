@@ -4,21 +4,40 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Video Streaming with Flask</title>
-    <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet" />
+    <title>NoLogin Tiktok</title>
+    <link href="https://vjs.zencdn.net/7.15.4/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.15.4/video.min.js"></script>
+    <style>
+       #general-cnt{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+       }
+       #form-cnt{
+            margin-bottom: 5%;
+       }
+
+    </style>
 </head>
 
 <body>
-    <form action="/" method="POST">
-        <input type="text" name="url"> 
-        <button type="submit">submit</button>
-    </form>
+    <div id="general-cnt">
+            <div id="form-cnt">
+                <form id="video-form">
+                    <label for="url">Vide URL:</label>
+                    <input type="text" id="url" name="url" required />
+                    <button type="submit">Stream Video</button>
+                </form>
+            </div>
 
-    <video id="my-video" class="video-js" controls preload="auto" width="640" height="264" data-setup="{}">
-            <source src="{{ url_for('static', filename='index.m3u8')}}" type="application/x-mpegURL" />
-    </video>
-
-    <script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script>
+            <div id="video-cnt">
+                <video id="video-player" class="video-js" width="640" height="264" controls>
+                    Your browser does not support video tag.
+                </video>
+            </div>
+    </div>
+    <script type="text/javascript" src="{{ url_for('static',filename='index.js')}}"></script>
 </body>
 
 </html>
